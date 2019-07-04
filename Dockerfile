@@ -22,8 +22,18 @@ RUN apt-get update && \
   libxtst6 \
   xauth \
   tzdata \
-  xvfb && \
-  rm -rf /var/lib/apt/lists/*
+  xvfb \
+  # install Chinese fonts
+  fonts-arphic-bkai00mp \
+  fonts-arphic-bsmi00lp \
+  fonts-arphic-gbsn00lp \
+  fonts-arphic-gkai00mp \
+  fonts-arphic-ukai \
+  fonts-arphic-uming \
+  ttf-wqy-zenhei \
+  ttf-wqy-microhei \
+  xfonts-wqy \
+  && rm -rf /var/lib/apt/lists/*
 
 # SET Timezone
 ENV TZ "Asia/Shanghai"
