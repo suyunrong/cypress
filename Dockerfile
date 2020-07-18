@@ -1,4 +1,4 @@
-FROM node:12.1.0
+FROM node:12.14.1
 
 # install Cypress OS dependencies
 # but do not install recommended libs and clean temp files
@@ -40,7 +40,7 @@ RUN ln -snf /usr/share/zoneinfo/$TZ /etc/localtime \
 # avoid too many progress messages
 # https://github.com/cypress-io/cypress/issues/1243
 ENV CI=1
-ARG CYPRESS_VERSION="3.2.0"
+ARG CYPRESS_VERSION="4.10.0"
 
 RUN echo "whoami: $(whoami)"
 RUN npm config -g set user $(whoami)
@@ -50,6 +50,7 @@ RUN cypress verify
 # Cypress cache and installed version
 RUN cypress cache path
 RUN cypress cache list
+RUN cypress info
 
 # versions of local tools
 RUN echo  " node version:    $(node -v) \n" \
